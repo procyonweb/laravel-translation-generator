@@ -1,0 +1,29 @@
+{
+  "name": "kg4b0r/laravel-translation-generator",
+  "description": "Translation generator for Laravel, Blade and Vue",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gabor Koszegi",
+      "email": "gabor@procyonweb.lu"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "illuminate/support": "~5.8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kg4b0r\\TranslationGenerator\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Kg4b0r\\TranslationGenerator\\ServiceProvider"
+      ]
+    }
+  }
+}
