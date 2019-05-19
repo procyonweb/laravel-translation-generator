@@ -11,7 +11,11 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function register()
     {
-
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                GenerateCommand::class
+            ]);
+        }
     }
 
 }
