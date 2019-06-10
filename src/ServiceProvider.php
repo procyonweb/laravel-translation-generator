@@ -17,6 +17,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             $this->commands([
                 GenerateCommand::class,
                 ShowFilesCommand::class,
+                ShowUntranslatedCommand::class,
             ]);
         }
     }
