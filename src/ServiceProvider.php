@@ -4,6 +4,8 @@ namespace Kg4b0r\TranslationGenerator;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
+    const SEARCH_PATTERN = '{app/{**/*.php,*.php},resources/views/{**/*.php,*.php},resources/js/{**/*,*}/*.vue}';
+
     /**
      * Register the service provider.
      *
@@ -13,7 +15,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                GenerateCommand::class
+                GenerateCommand::class,
+                ShowFilesCommand::class,
             ]);
         }
     }

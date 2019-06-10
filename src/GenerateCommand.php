@@ -17,7 +17,7 @@ class GenerateCommand extends Command
 
     public function handle()
     {
-        $translatables = (new SearchService())->getTranslatableStrings('{app/{**/*,*}/*.php,resources/views/{**/*,*}/*.php,resources/js/{**/*,*}/*.vue}');
+        $translatables = (new SearchService())->getTranslatableStrings(ServiceProvider::SEARCH_PATTERN);
 
         $jsonFile = file_get_contents('resources/lang/hu.json');
         $translations = json_decode($jsonFile, true);
