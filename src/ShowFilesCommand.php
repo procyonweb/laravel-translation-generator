@@ -17,7 +17,7 @@ class ShowFilesCommand extends Command
 
     public function handle()
     {
-        $files = (new SearchService())->getFiles(ServiceProvider::SEARCH_PATTERN);
+        $files = (new SearchService())->getFiles(config('translation.generator.patterns'));
 
         foreach ($files as $file) {
             $this->line($file);

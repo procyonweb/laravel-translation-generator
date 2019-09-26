@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 
 class ShowUntranslatedCommand extends Command
 {
-    protected $signature = 'translation:show-untranslated';
+    protected $signature = 'translation:show-missing {lang=hu}';
 
     protected $description = 'Show untranslated strings';
 
@@ -17,7 +17,8 @@ class ShowUntranslatedCommand extends Command
 
     public function handle()
     {
-        $jsonFile = file_get_contents('resources/lang/hu.json');
+        $lang = $this->argument('lang');
+        $jsonFile = file_get_contents('resources/lang/' . $lang . '.json');
         $translations = json_decode($jsonFile, true);
 
         $count = 0;

@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 
 class GenerateCommand extends Command
 {
-    protected $signature = 'translation:generate';
+    protected $signature = 'translation:generate {lang=hu}';
 
     protected $description = 'Generate missing translation strings in php and Vue files';
 
@@ -17,9 +17,11 @@ class GenerateCommand extends Command
 
     public function handle()
     {
-        $translatables = (new SearchService())->getTranslatableStrings(ServiceProvider::SEARCH_PATTERN);
+        $translatables = (new SearchService())->getTranslatableStrings(config('translation.generator.patterns'));
 
-        $jsonFile = file_get_contents('resources/lang/hu.json');
+        $lang = $this->argument('lang');
+        $fileName = 'resources/lang/' . $lang . '.json';
+        $jsonFile = file_get_contents($fileName);
         $translations = json_decode($jsonFile, true);
 
         foreach ($translatables as $translatable) {
@@ -30,6 +32,6 @@ class GenerateCommand extends Command
             }
         }
 
-        file_put_contents('resources/lang/hu.json', json_encode($translations, JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE+JSON_UNESCAPED_SLASHES));
+        file_put_contents($fileName, json_encode($translations, JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE+JSON_UNESCAPED_SLASHES));
     }
 }

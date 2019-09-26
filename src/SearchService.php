@@ -4,10 +4,10 @@ namespace Kg4b0r\TranslationGenerator;
 
 class SearchService
 {
-    public function getTranslatableStrings(string $pattern): array
+    public function getTranslatableStrings(array $patterns): array
     {
         $translations = [];
-        $files = $this->getFiles($pattern);
+        $files = $this->getFiles($patterns);
 
         foreach ($files as $file) {
             $handle = fopen($file, 'r');
@@ -24,8 +24,10 @@ class SearchService
         return array_unique($translations);
     }
 
-    public function getFiles(string $pattern): array
+    public function getFiles(array $patterns): array
     {
+        $pattern = '{' . implode(',', $patterns) . '}';
+
         return glob($pattern, GLOB_BRACE);
     }
 }
