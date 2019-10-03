@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Kg4b0r\TranslationGenerator;
+namespace ProcyonWeb\TranslationGenerator;
 
 class SearchService
 {
