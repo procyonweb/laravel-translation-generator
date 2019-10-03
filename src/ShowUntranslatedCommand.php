@@ -13,16 +13,20 @@ class ShowUntranslatedCommand extends Command
     public function handle(): void
     {
         $lang = $this->argument('lang');
-        $jsonFile = file_get_contents('resources/lang/' . $lang . '.json');
-        $translations = json_decode($jsonFile, true);
-
-        $count = 0;
-        foreach ($translations as $key => $value) {
-            if ($key === $value) {
-                $this->line($value);
-                $count++;
-            }
+        
+        if(! file_exists('resources/lang/'. $lang . '.json')) {
+            $this->error($lang . '.json doesn\'t exist');
+            return;
         }
+
+        $jsonFile = file_get_contents('resources/lang/' . $lang . '.json');
+
+        $count = collect(json_decode($jsonFile, true))
+                    ->filter(function($value, $key){
+                        return $key === $value;
+                    })->each(function($value){
+                        $this->line($value);
+                    })->count();
 
         $this->info('Untranslated lines: ' . $count);
     }
