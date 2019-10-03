@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Kg4b0r\TranslationGenerator;
+namespace ProcyonWeb\TranslationGenerator;
 
 use Illuminate\Console\Command;
 
@@ -10,12 +10,7 @@ class ShowUntranslatedCommand extends Command
 
     protected $description = 'Show untranslated strings';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    public function handle()
+    public function handle(): void
     {
         $lang = $this->argument('lang');
         $jsonFile = file_get_contents('resources/lang/' . $lang . '.json');

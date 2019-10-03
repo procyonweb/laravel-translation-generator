@@ -5,11 +5,11 @@ Translation file generator for Laravel, Blade and Vue
 ## Installation
 
 ```bash
-composer require kg4b0r/laravel-translation-generator
+composer require procyonweb/laravel-translation-generator
 ```
 
 ```
-php artisan vendor:publish --provider="Kg4b0r\TranslationGenerator\ServiceProvider"
+php artisan vendor:publish --provider="ProcyonWeb\TranslationGenerator\ServiceProvider"
 ```
 
 ## Usage

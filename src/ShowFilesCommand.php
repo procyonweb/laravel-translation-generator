@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Kg4b0r\TranslationGenerator;
+namespace ProcyonWeb\TranslationGenerator;
 
 use Illuminate\Console\Command;
 
@@ -10,12 +10,7 @@ class ShowFilesCommand extends Command
 
     protected $description = 'Show result of the file search';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    public function handle()
+    public function handle(): void
     {
         $files = (new SearchService())->getFiles(config('translation.generator.patterns'));
 

@@ -1,5 +1,5 @@
 {
-  "name": "kg4b0r/laravel-translation-generator",
+  "name": "procyonweb/laravel-translation-generator",
   "description": "Translation generator for Laravel, Blade and Vue",
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -18,13 +18,13 @@
   },
   "autoload": {
     "psr-4": {
-      "Kg4b0r\\TranslationGenerator\\": "src/"
+      "ProcyonWeb\\TranslationGenerator\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Kg4b0r\\TranslationGenerator\\ServiceProvider"
+        "ProcyonWeb\\TranslationGenerator\\ServiceProvider"
       ]
     }
   }

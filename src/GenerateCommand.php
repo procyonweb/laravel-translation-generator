@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Kg4b0r\TranslationGenerator;
+namespace ProcyonWeb\TranslationGenerator;
 
 use Illuminate\Console\Command;
 
@@ -10,12 +10,7 @@ class GenerateCommand extends Command
 
     protected $description = 'Generate missing translation strings in php and Vue files';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    public function handle()
+    public function handle(): void
     {
         $translatables = (new SearchService())->getTranslatableStrings(config('translation.generator.patterns'));
 
