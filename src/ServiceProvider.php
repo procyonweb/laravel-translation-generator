@@ -11,6 +11,11 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/translation.php',
+            'laravel_translation_generator'
+        );
+
         if ($this->app->runningInConsole()) {
             $this->commands([
                 GenerateCommand::class,
@@ -29,6 +34,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/translation.php' => config_path('translation.php'),
-        ]);
+        ], 'laravel_translation_generator-config');
     }
 }
