@@ -1,6 +1,6 @@
 # Translation Generator
 
-Translation file generator for Laravel, Blade and Vue
+Translation file generator for Laravel, Blade and Vue.
 
 ## Installation
 
@@ -15,15 +15,28 @@ php artisan vendor:publish --provider="ProcyonWeb\TranslationGenerator\ServicePr
 ## Usage
 
 ```shell script
-php artisan translation:show-missing {lang=hu} # shows untranslated text in file
+php artisan translation:show-missing {lang=en} # shows untranslated text in file
 php artisan translation:show-files # shows all files found by configuration
-php artisan translation:generate {lang=hu} # generates missing keys for translation file
+php artisan translation:generate {lang=en} # generates missing keys for translation file
 ```
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+### Changelog
 
-Please make sure to update tests as appropriate.
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+### Security
+
+If you discover any security related issues, please email gabor@procyonweb.lu instead of using the issue tracker.
+
+## Credits
+
+- [Gabor Koszegi](https://github.com/procyonweb)
+- [All Contributors](../../contributors)
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
