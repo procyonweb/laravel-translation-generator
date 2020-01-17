@@ -1,5 +1,10 @@
 # Translation Generator
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/procyonweb/laravel-translation-generator.svg?style=flat-square)](https://packagist.org/packages/procyonweb/subscription)
+[![Build Status](https://img.shields.io/travis/procyonweb/laravel-translation-generator/master.svg?style=flat-square)](https://travis-ci.org/procyonweb/subscription)
+[![Quality Score](https://img.shields.io/scrutinizer/g/procyonweb/laravel-translation-generator.svg?style=flat-square)](https://scrutinizer-ci.com/g/procyonweb/subscription)
+[![Total Downloads](https://img.shields.io/packagist/dt/procyonweb/laravel-translation-generator.svg?style=flat-square)](https://packagist.org/packages/procyonweb/subscription)
+
 Translation file generator for Laravel, Blade and Vue.
 
 ## Installation

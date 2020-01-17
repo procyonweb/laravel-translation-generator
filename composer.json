@@ -14,6 +14,7 @@
     "php": ">=7.2",
     "illuminate/support": "^6.0",
     "illuminate/console": "^6.0",
+    "lokalise/php-lokalise-api": "~2.2.0",
     "ext-json": "*"
   },
   "autoload": {
