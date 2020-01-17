@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 
 class GenerateCommand extends Command
 {
-    protected $signature = 'translation:generate {lang=hu}';
+    protected $signature = 'translation:generate {lang=en}';
 
     protected $description = 'Generate missing translation strings in php and Vue files';
 
