@@ -3,6 +3,7 @@
 namespace ProcyonWeb\TranslationGenerator;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Config;
 use Lokalise\LokaliseApiClient;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use ZipArchive;
@@ -78,18 +79,21 @@ class LokaliseClient
         try {
             $response = $this->client->files->download(
                 $this->projectId,
-                [
-                    'format' => 'json',
-                    'original_filenames' => false,
-                    'bundle_structure' => '%LANG_ISO%.%FORMAT%',
-                    'export_empty_as' => 'base',
-                ]
+                array_merge(
+                    [
+                        'format' => 'json',
+                        'original_filenames' => false,
+                        'bundle_structure' => '%LANG_ISO%.%FORMAT%',
+                        'export_empty_as' => 'base',
+                    ],
+                    Config::get('translation.lokalise.downloadOptions', [])
+                )
             );
             $bundleUrl = $response->getContent()['bundle_url'];
 
             $this->output->writeln(sprintf('[LOKALISE] Downloading translations from bundle url: %s', $bundleUrl));
 
-            $path = storage_path('app').'locale.zip';
+            $path = storage_path().'locale.zip';
             $file = fopen($path, 'wb');
             $client = new Client();
             $client->get($bundleUrl, ['save_to' => $file]);
@@ -98,6 +102,8 @@ class LokaliseClient
             $zip->open($path);
             $zip->extractTo(resource_path('lang'));
             $zip->close();
+
+            unlink($path);
 
             $this->output->writeln('[LOKALISE] Translations successfully downloaded.');
 

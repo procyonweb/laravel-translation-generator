@@ -9,6 +9,7 @@ return [
     ],
     'lokalise' => [
         'apiToken' => env('LOKALISE_API_TOKEN', null),
-        'projectId' => ''
+        'projectId' => '',
+        'downloadOptions' => []
     ]
 ];

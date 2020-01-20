@@ -2,6 +2,11 @@
 
 All notable changes to `subscription` will be documented in this file
 
+## [2.1.2] - 2020-01-20
+### Changed
+- Added new config to override download options. See [documentation](https://lokalise.com/api2docs/curl/#transition-download-files-post).
+- Remove file after unzip
+
 ## [2.1.1] - 2020-01-20
 ### Changed
 - Fixed Download command
