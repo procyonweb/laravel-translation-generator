@@ -5,7 +5,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/procyonweb/laravel-translation-generator.svg?style=flat-square)](https://scrutinizer-ci.com/g/procyonweb/subscription)
 [![Total Downloads](https://img.shields.io/packagist/dt/procyonweb/laravel-translation-generator.svg?style=flat-square)](https://packagist.org/packages/procyonweb/subscription)
 
-Translation file generator for Laravel, Blade and Vue.
+Translation file generator for Laravel, Blade and Vue with upload and download from Lokalise.
 
 ## Installation
 
@@ -22,7 +22,8 @@ php artisan vendor:publish --provider="ProcyonWeb\TranslationGenerator\ServicePr
 ```shell script
 php artisan translation:show-missing {lang=en} # shows untranslated text in file
 php artisan translation:show-files # shows all files found by configuration
-php artisan translation:generate {lang=en} # generates missing keys for translation file
+php artisan translation:generate {lang=en} {--upload} # generates missing keys for translation file and upload to Lokalise
+php artisan translation:download # download all translation from Lokalise
 ```
 
 ### Changelog

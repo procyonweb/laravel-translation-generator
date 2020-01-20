@@ -2,8 +2,10 @@
 
 namespace ProcyonWeb\TranslationGenerator;
 
+use GuzzleHttp\Client;
 use Lokalise\LokaliseApiClient;
 use Symfony\Component\Console\Output\ConsoleOutput;
+use ZipArchive;
 
 class LokaliseClient
 {
@@ -56,11 +58,53 @@ class LokaliseClient
                     $result['updated']
                 )
             );
+
+            return true;
         } catch (\Lokalise\Exceptions\LokaliseResponseException $e) {
             $this->output->writeln(
                 sprintf(
                     '[LOKALISE] Failed to upload file: %s. %s',
                     $filename,
+                    $e->getMessage()
+                )
+            );
+        }
+
+        return false;
+    }
+
+    public function downloadFiles(): bool
+    {
+        try {
+            $response = $this->client->files->download(
+                $this->projectId,
+                [
+                    'format' => 'json',
+                    'original_filenames' => false,
+                    'bundle_structure' => '%LANG_ISO%.%FORMAT%',
+                    'export_empty_as' => 'base',
+                ]
+            );
+            $result = $response->getContent()['result'];
+            $bundleUrl = $result['bundle_url'];
+
+            $this->output->writeln(sprintf('[LOKALISE] Downloading translations from bundle url: %s', $bundleUrl));
+
+            $path = storage_path('app').'locale.zip';
+            $file = fopen($path, 'wb');
+            $client = new Client();
+            $client->get($bundleUrl, ['save_to' => $file]);
+
+            $zip = new ZipArchive;
+            $zip->open($path);
+            $zip->extractTo(resource_path('lang'));
+            $zip->close();
+
+            return true;
+        } catch (\Throwable $e) {
+            $this->output->writeln(
+                sprintf(
+                    '[LOKALISE] Failed to download files. %s',
                     $e->getMessage()
                 )
             );

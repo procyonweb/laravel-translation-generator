@@ -15,7 +15,9 @@
     "illuminate/support": "^6.0",
     "illuminate/console": "^6.0",
     "lokalise/php-lokalise-api": "~2.2.0",
-    "ext-json": "*"
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "^6.5",
+    "ext-zip": "*"
   },
   "autoload": {
     "psr-4": {
