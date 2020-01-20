@@ -2,6 +2,10 @@
 
 All notable changes to `subscription` will be documented in this file
 
+## [2.1.1] - 2020-01-20
+### Changed
+- Fixed Download command
+
 ## [2.1.0] - 2020-01-20
 ### Added
 - Added Lokalise API to upload and download translations.

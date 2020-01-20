@@ -85,8 +85,7 @@ class LokaliseClient
                     'export_empty_as' => 'base',
                 ]
             );
-            $result = $response->getContent()['result'];
-            $bundleUrl = $result['bundle_url'];
+            $bundleUrl = $response->getContent()['bundle_url'];
 
             $this->output->writeln(sprintf('[LOKALISE] Downloading translations from bundle url: %s', $bundleUrl));
 
@@ -99,6 +98,8 @@ class LokaliseClient
             $zip->open($path);
             $zip->extractTo(resource_path('lang'));
             $zip->close();
+
+            $this->output->writeln('[LOKALISE] Translations successfully downloaded.');
 
             return true;
         } catch (\Throwable $e) {

@@ -12,11 +12,14 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register()
     {
         if ($this->app->runningInConsole()) {
-            $this->commands([
-                GenerateCommand::class,
-                ShowFilesCommand::class,
-                ShowUntranslatedCommand::class,
-            ]);
+            $this->commands(
+                [
+                    GenerateCommand::class,
+                    ShowFilesCommand::class,
+                    ShowUntranslatedCommand::class,
+                    DownloadCommand::class,
+                ]
+            );
         }
     }
 
@@ -27,8 +30,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__.'/../config/translation.php' => config_path('translation.php'),
-        ]);
+        $this->publishes(
+            [
+                __DIR__.'/../config/translation.php' => config_path('translation.php'),
+            ]
+        );
     }
 }
