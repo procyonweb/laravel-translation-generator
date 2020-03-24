@@ -1,6 +1,11 @@
 # Changelog
 
-All notable changes to `subscription` will be documented in this file
+All notable changes to `laravel-translation-generator` will be documented in this file
+
+## [3.0.0] - 2020-03-23
+### Changed
+- [BC] Switch to Phrase.com translation service (see new config file)
+- Downloading fresh files before generating new keys
 
 ## [2.1.2] - 2020-01-20
 ### Changed

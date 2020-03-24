@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ProcyonWeb\TranslationGenerator;
 
@@ -32,7 +34,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->publishes(
             [
-                __DIR__.'/../config/translation.php' => config_path('translation.php'),
+                __DIR__ . '/../config/translation.php' => config_path('translation.php'),
             ]
         );
     }

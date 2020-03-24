@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ProcyonWeb\TranslationGenerator;
 
@@ -13,8 +15,8 @@ class ShowUntranslatedCommand extends Command
     public function handle(): void
     {
         $lang = $this->argument('lang');
-        
-        if(! file_exists('resources/lang/'. $lang . '.json')) {
+
+        if (!file_exists('resources/lang/' . $lang . '.json')) {
             $this->error($lang . '.json doesn\'t exist');
             return;
         }
@@ -22,11 +24,15 @@ class ShowUntranslatedCommand extends Command
         $jsonFile = file_get_contents('resources/lang/' . $lang . '.json');
 
         $count = collect(json_decode($jsonFile, true))
-                    ->filter(function($value, $key){
-                        return $key === $value;
-                    })->each(function($value){
-                        $this->line($value);
-                    })->count();
+            ->filter(
+                function ($value, $key) {
+                    return $key === $value;
+                }
+            )->each(
+                function ($value) {
+                    $this->line($value);
+                }
+            )->count();
 
         $this->info('Untranslated lines: ' . $count);
     }

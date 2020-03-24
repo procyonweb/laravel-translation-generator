@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ProcyonWeb\TranslationGenerator;
 
@@ -10,22 +12,22 @@ class DownloadCommand extends Command
 
     protected $description = 'Download all translation json files from Lokalise';
 
-    /** @var LokaliseClient */
-    private $lokaliseClient;
+    /** @var PhraseClient */
+    private $client;
 
-    public function __construct(LokaliseClient $lokaliseClient)
+    public function __construct(PhraseClient $client)
     {
         parent::__construct();
-        $this->lokaliseClient = $lokaliseClient;
+        $this->client = $client;
     }
 
     public function handle(): void
     {
-        $this->info('[LOKALISE] Downloading files...');
-        if ($this->lokaliseClient->isReady()) {
-            $this->lokaliseClient->downloadFiles();
+        $this->info('[PHRASE] Downloading files...');
+        if ($this->client->isReady()) {
+            $this->client->downloadFiles();
         } else {
-            $this->error('[LOKALISE] Please check Lokalise config.');
+            $this->error('[PHRASE] Please check Lokalise config.');
         }
     }
 }

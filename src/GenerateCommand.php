@@ -10,21 +10,22 @@ class GenerateCommand extends Command
 
     protected $description = 'Generate missing translation strings in php and Vue files';
 
-    /** @var LokaliseClient */
-    private $lokaliseClient;
+    /** @var PhraseClient */
+    private $client;
 
-    public function __construct(LokaliseClient $lokaliseClient)
+    public function __construct(PhraseClient $client)
     {
         parent::__construct();
-        $this->lokaliseClient = $lokaliseClient;
+        $this->client = $client;
     }
 
     public function handle(): void
     {
         $translatables = (new SearchService())->getTranslatableStrings(config('translation.generator.patterns'));
+        $this->client->downloadFiles();
 
         $lang = $this->argument('lang');
-        $fileName = 'resources/lang/'.$lang.'.json';
+        $fileName = 'resources/lang/' . $lang . '.json';
         $jsonFile = file_get_contents($fileName);
         $translations = json_decode($jsonFile, true);
 
@@ -39,8 +40,8 @@ class GenerateCommand extends Command
         file_put_contents($fileName, $content);
 
         $isUpload = $this->option('upload');
-        if ($isUpload && $this->lokaliseClient->isReady()) {
-            $this->lokaliseClient->uploadFile($content, $fileName, $lang);
+        if ($isUpload && $this->client->isReady()) {
+            $this->client->uploadFile($content, $fileName, $lang);
         }
     }
 }

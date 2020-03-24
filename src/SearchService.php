@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ProcyonWeb\TranslationGenerator;
 
@@ -21,7 +23,6 @@ class SearchService
             foreach ($matches as $match) {
                 $translations[] = $match[1];
             }
-
         }
 
         return array_unique($translations);
@@ -31,8 +32,7 @@ class SearchService
     {
         $files = new Collection();
 
-        foreach ($patterns as $path => $pattern)
-        {
+        foreach ($patterns as $path => $pattern) {
             $directory = new \RecursiveDirectoryIterator($path);
             $iterator = new \RecursiveIteratorIterator($directory);
             $regexIterator = new \RegexIterator($iterator, $pattern, \RecursiveRegexIterator::GET_MATCH);
