@@ -47,16 +47,13 @@ class LokaliseClient
                     'filename' => $filename,
                     'lang_iso' => $langIso,
                     'slashn_to_linebreak' => true,
+                    'queue' => true
                 ]
             );
-            $result = $response->getContent()['result'];
             $this->output->writeln(
                 sprintf(
-                    '[LOKALISE] %s file uploaded. %d skipped, %d inserted, %d updated',
-                    $filename,
-                    $result['skipped'],
-                    $result['inserted'],
-                    $result['updated']
+                    '[LOKALISE] %s file uploaded and queued.',
+                    $filename
                 )
             );
 
