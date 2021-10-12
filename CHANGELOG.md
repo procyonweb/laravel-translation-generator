@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-translation-generator` will be documented in this file
 
+## [4.0.0] - 2021-10-12
+### Changed
+- Prepare package to handle different sources
+
 ## [3.0.0] - 2020-03-23
 ### Changed
 - [BC] Switch to Phrase.com translation service (see new config file)

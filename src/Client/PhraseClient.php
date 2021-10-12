@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace ProcyonWeb\TranslationGenerator;
+namespace ProcyonWeb\TranslationGenerator\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Facades\Config;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
-class PhraseClient
+class PhraseClient implements ClientInterface
 {
     private const BASE_URL = 'https://api.phrase.com/v2/';
 
@@ -93,7 +93,7 @@ class PhraseClient
     public function downloadFiles(): bool
     {
         try {
-            $locales = config('translation.phrase.locales', []);
+            $locales = config('translation.locales', []);
 
             if (count($locales) === 0) {
                 $this->output->writeln('[PHRASE] No locales configured.');
