@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 class AbstractCommand extends Command
 {
-    protected ?ClientInterface $client;
+    protected ?ClientInterface $client = null;
 
     public function __construct(ConsoleOutput $output)
     {
