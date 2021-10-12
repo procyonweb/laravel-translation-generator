@@ -3,11 +3,18 @@ declare(strict_types=1);
 
 namespace ProcyonWeb\TranslationGenerator;
 
+use Symfony\Component\Console\Output\ConsoleOutput;
+
 class GenerateCommand extends AbstractCommand
 {
     protected $signature = 'translation:generate {lang=en} {--upload}';
 
     protected $description = 'Generate missing translation strings in php and Vue files';
+
+    public function __construct(ConsoleOutput $output)
+    {
+        parent::__construct($output);
+    }
 
     public function handle(): void
     {
