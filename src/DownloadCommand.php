@@ -23,7 +23,7 @@ class DownloadCommand extends AbstractCommand
         if ($this->client?->isReady()) {
             $this->client->downloadFiles();
         } else {
-            $this->error('[Translation Generator] Please check Lokalise config.');
+            $this->error('[Translation Generator] Please check client config.');
         }
     }
 }

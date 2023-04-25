@@ -23,7 +23,7 @@ class AbstractCommand extends Command
     {
         match (config('translation.client')) {
             'phrase' => $this->client = new PhraseClient($output),
-            null => null
+            default => null
         };
     }
 }

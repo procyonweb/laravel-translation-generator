@@ -13,23 +13,16 @@ class PhraseClient implements ClientInterface
 {
     private const BASE_URL = 'https://api.phrase.com/v2/';
 
-    /** @var Client */
-    private $client;
-
-    /** @var string|null */
-    private $projectId;
-
-    /** @var ConsoleOutput */
-    private $output;
-
-    /** @var string */
-    private $apiToken;
+    private ?Client $client = null;
+    private ?string $projectId = null;
+    private ConsoleOutput $output;
+    private string $apiToken;
 
     public function __construct(ConsoleOutput $output)
     {
         $this->output = $output;
-        $apiToken = config('translation.phrase.apiToken', null);
-        $projectId = config('translation.phrase.projectId', null);
+        $apiToken = config('translation.clients.phrase.apiToken', null);
+        $projectId = config('translation.clients.phrase.projectId', null);
 
         if ($apiToken && $projectId) {
             $this->client = new Client(

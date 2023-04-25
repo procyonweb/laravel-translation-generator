@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 
 class ShowUntranslatedCommand extends Command
 {
-    protected $signature = 'translation:show-missing {lang=hu}';
+    protected $signature = 'translation:show-missing {lang=fr}';
 
     protected $description = 'Show untranslated strings';
 

@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-translation-generator` will be documented in this file
 
+## [4.0.4] - 2023-04-25
+### Added
+- Laravel 10 support
+
+## [4.0.3] - 2022-06-21
+### Added
+- Laravel 9 support
+
 ## [4.0.0] - 2021-10-12
 ### Changed
 - Prepare package to handle different sources
