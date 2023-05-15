@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-translation-generator` will be documented in this file
 
+## [4.1.0] - 2023-05-15
+### Added
+- Move lang directory to config
+
 ## [4.0.4] - 2023-04-25
 ### Added
 - Laravel 10 support

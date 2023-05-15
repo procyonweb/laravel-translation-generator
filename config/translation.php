@@ -5,7 +5,8 @@ return [
         'patterns' => [
             'app' => '/^.+\.php$/i',
             'resources' => '/^.+\.(?:php|vue|js)$/i',
-        ]
+        ],
+        'lang_dir' => 'resources/lang/',
     ],
     'locales' => [
         'en',

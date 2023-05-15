@@ -12,11 +12,12 @@
   ],
   "require": {
     "php": "^8.0",
+    "ext-json": "*",
+    "ext-zip": "*",
     "illuminate/support": "^8.0|^9.0|^10.0",
     "illuminate/console": "^8.0|^9.0|^10.0",
-    "ext-json": "*",
     "guzzlehttp/guzzle": "^7.0.1",
-    "ext-zip": "*"
+    "illuminate/contracts": "^8.0|^9.0|^10.0"
   },
   "autoload": {
     "psr-4": {

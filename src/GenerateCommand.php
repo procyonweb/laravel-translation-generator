@@ -24,7 +24,7 @@ class GenerateCommand extends AbstractCommand
         }
 
         $lang = $this->argument('lang');
-        $fileName = 'resources/lang/' . $lang . '.json';
+        $fileName = config('translation.generator.lang_dir', 'resources/lang/') . $lang . '.json';
         $jsonFile = file_get_contents($fileName);
         $translations = json_decode($jsonFile, true);
 
@@ -35,6 +35,7 @@ class GenerateCommand extends AbstractCommand
             }
         }
 
+        ksort($translations);
         $content = json_encode($translations, JSON_PRETTY_PRINT + JSON_UNESCAPED_UNICODE + JSON_UNESCAPED_SLASHES);
         file_put_contents($fileName, $content);
 
