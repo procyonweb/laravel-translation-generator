@@ -30,7 +30,7 @@ class GenerateCommand extends AbstractCommand
 
         $fallback = [];
         if ($lang !== config('translation.generator.fallback')) {
-            $fallbackFileName = config('translation.generator.lang_dir', 'resources/lang/') . $lang . '.json';
+            $fallbackFileName = config('translation.generator.lang_dir', 'resources/lang/') . config('translation.generator.fallback') . '.json';
             $fallback = json_decode(file_get_contents($fallbackFileName), true);
         }
 
