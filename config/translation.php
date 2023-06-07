@@ -7,6 +7,7 @@ return [
             'resources' => '/^.+\.(?:php|vue|js)$/i',
         ],
         'lang_dir' => 'resources/lang/',
+        'fallback' => 'en',
     ],
     'locales' => [
         'en',

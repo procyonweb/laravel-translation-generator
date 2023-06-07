@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace ProcyonWeb\TranslationGenerator;
@@ -25,13 +26,18 @@ class GenerateCommand extends AbstractCommand
 
         $lang = $this->argument('lang');
         $fileName = config('translation.generator.lang_dir', 'resources/lang/') . $lang . '.json';
-        $jsonFile = file_get_contents($fileName);
-        $translations = json_decode($jsonFile, true);
+        $translations = json_decode(file_get_contents($fileName), true);
+
+        $fallback = [];
+        if ($lang !== config('translation.generator.fallback')) {
+            $fallbackFileName = config('translation.generator.lang_dir', 'resources/lang/') . $lang . '.json';
+            $fallback = json_decode(file_get_contents($fallbackFileName), true);
+        }
 
         foreach ($translatables as $translatable) {
             $translatable = str_replace('\\', '', $translatable);
             if (!array_key_exists($translatable, $translations)) {
-                $translations[$translatable] = $translatable;
+                $translations[$translatable] = $fallback[$translatable] ?? $translatable;
             }
         }
 

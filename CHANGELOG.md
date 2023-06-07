@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-translation-generator` will be documented in this file
 
+## [4.2.0] - 2023-06-07
+### Changed
+- Use fallback language for default translation
+
 ## [4.1.0] - 2023-05-15
 ### Added
 - Move lang directory to config
